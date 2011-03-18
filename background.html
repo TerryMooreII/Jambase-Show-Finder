@@ -1,0 +1,47 @@
+<!-----------------------------------------------------------------------------
+Application: Jambase Concert Lookup
+Date: 9/11/2010
+Written By: Terry Moore 
+  Email: motersho@gmail.com 
+  Website: www.motersho.com
+Desc: Adds a popup icon to Google Chrome for quick access
+      to find local jmband concerts in your area via Jambase.com
+------------------------------------------------------------------------------>
+
+
+<html>
+  <script>
+/***********************************************************************************
+* Desc:  This background page listens for the popup.html to pass it 
+*        a URL so that it can either open a new tab to display the url
+*        or if a new tab has already been created for Phish Setlist extension
+*        it will then reuse that tab. 
+*       
+************************************************************************************/
+
+var createNewTab=0;
+var tab;
+function openurl(url){
+  //alert('URL= ' + url);
+  if (createNewTab==0) {
+  chrome.tabs.create({'url': url}, function(tab) {
+ });
+  createNewTab=1;  
+  }else{
+     chrome.tabs.getSelected(null, function (tab){
+  var tabUrl = encodeURIComponent(tab.url);
+  var tabTitle = encodeURIComponent(tab.title);
+
+  //This is what you want - chrome.tabs.update
+  chrome.tabs.update(tab.id, {'url': url});
+});
+  }
+  // Tab opened.
+ 
+};
+
+
+
+  </script>
+</html>
+

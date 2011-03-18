@@ -1,0 +1,16 @@
+{
+  "name": "Jambase Show Finder",
+  "version": "1.0.1",
+  "description": "Find upcoming concerts on Jambase.com.",
+  "options_page": "options.html",
+  "icons": { "48": "jb.jpg"},
+  "browser_action": {
+    "default_icon": "jb.jpg",
+    "popup": "popup.html"
+  },
+  "background_page": "background.html",
+  "permissions": [
+    "http://api.jambase.com/",
+    "tabs"
+  ]
+}

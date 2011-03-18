@@ -1,0 +1,58 @@
+/* general */
+* 		{ font-family:arial !important; font-size:13px;  }
+body		{ background-color:#e4e6e9}
+input {padding:2px;}
+#header 	{ text-align:center; padding:0 0 0 0; margin:0 0 0 0; background-color:#748192 /*#F90 /*#295987  #1D2F4F*/}
+#header h1	{ padding:10px; font-size:18px; margin:0 0 0 0; color:white;}
+
+
+.loading {height:100%; width:100%;}
+.loading  img {vertical-align: middle;padding-top:50px;}
+
+#showHeader		{ width:100%; padding:0px; margin:0px;}
+#showHeader table { margin-left:30px; margin-top:0px;}
+#showHeader th	{text-align:left;}
+/* show info */ 
+#showinfo 		{ background-color:white; height:240px; width:610px; overflow:auto; margin: 0px 10px 0 10px; padding:10px;
+				border:2px solid gray; border-radius: 5px; font-size:12px clear:both !important; }
+#showinfo ul{ width:100%}
+#showinfo li  {display: inline;list-style-type: none;padding-right: 20px;border:1px solid;}
+
+.showDesign a:link 	{ color:#369; text-decoration:none; font-weight:bold; }
+.showDesign a:hover	{ color:#369; text-decoration:underline; }
+
+#selectDate		{ text-align:center; }
+
+#wrapper		{ width:650px; height:350px; font-size:12px !important;  }
+
+
+#menu { width:100%; margin:0px; padding:0px; padding-bottom:7px;}
+#menu h2 {text-size:16px; text-align:center;}
+#menu td { font-weight:bold;}
+#menu .header{text-align:right; font-weight:bold}
+#menu .option{padding-right:10px;}
+#menu .radius{width:140px;}
+
+
+#menu .button  {float:left; vertical-align:middle; padding-left:15px; padding-top:10px}
+#menu .button input {padding:10px;}
+
+.error {color:red; text-align:center; font-size:16px;}
+#msg{height:100px; width:100%; word-wrap:break-word}
+
+/* upcoming */ 
+.upcoming 		{ border:0; width:98%; border-collapse:collapse;} 
+.upcoming th		{ font-weight:bold; text-align:left; padding-left:10px; padding:5px;  border-bottom:1px solid #aaa; }
+.upcoming td		{ font-weight:normal; text-align:left; padding-left:3px; padding:5px; border-bottom:1px solid #aaa; }
+
+.upcoming tr:nth-child(even) { background:#fff; }
+.upcoming tr:hover	{ background:lavender; } 
+.upcoming td a		{ color:#369; }
+.upcoming tr:hover th{ background-color: white} 
+.date {font-weight:bold; font-size: 14px;}
+
+/* footer */ 
+#footer 	{ padding:5px; text-align: center; font-size: 10px; }
+#footer a 	{ font-size:10px; } 
+
+

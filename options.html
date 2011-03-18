@@ -1,0 +1,310 @@
+<!-----------------------------------------------------------------------------
+Application: Jambase Concert Lookup
+Date: 9/11/2010
+Written By: Terry Moore 
+  Email: motersho@gmail.com 
+  Website: www.motersho.com
+Desc: Adds a popup icon to Google Chrome for quick access
+      to find local jmband concerts in your area via Jambase.com
+------------------------------------------------------------------------------>
+
+<html>
+<head><title>Jambase Show Finder Options</title></head>
+<link rel="stylesheet" href="css/jambase.css" type="text/css" media="all" /> 
+<script type="text/javascript" charset="utf-8" src="js/jquery-1.4.1.min.js"></script>
+<script type="text/javascript">
+
+function clearOptions(){
+  window.localStorage.removeItem("city");
+  window.localStorage.removeItem("state");
+  window.localStorage.removeItem("radius");
+  window.localStorage.removeItem("band");
+  window.localStorage.removeItem("user");
+
+  document.getElementById("city").value = "";
+  document.getElementById("state").value = "";
+  document.getElementById("radius").value = "";
+  document.getElementById("band").value = "";
+  document.getElementById("user").value = "";
+
+
+}
+
+function save_options() {
+
+  var city = document.getElementById("city").value;
+  window.localStorage.setItem("city", city);
+
+  var state = document.getElementById("state").value;
+  window.localStorage.setItem("state", state);
+
+  var radius = document.getElementById("radius").value;
+  window.localStorage.setItem("radius", radius);
+
+
+  var band = document.getElementById("band").value;
+  window.localStorage.setItem("band", band);
+
+  var user = document.getElementById("user").value;
+  window.localStorage.setItem("user", user);
+
+  
+  status.innerHTML = "***Options Saved.***";
+  setTimeout(function() {
+    status.innerHTML = "";
+  }, 1500);
+}
+
+function restore_options() {
+
+  var city = window.localStorage.getItem("city");
+  if (city) {
+    document.getElementById('city').value = city;
+  }
+
+  var state = window.localStorage.getItem("state");
+  if (state) {
+    document.getElementById('state').value = state;
+  }
+
+
+  var radius = window.localStorage.getItem("radius");
+  if (radius) {
+    document.getElementById('radius').value = radius;
+  }
+
+  var band = window.localStorage.getItem("band");
+  if (band) {
+    document.getElementById('band').value = band;
+  }
+
+  var user = window.localStorage.getItem("user");
+  if (user) {
+    document.getElementById('user').value = user;
+  }
+}
+
+function toBool(str){
+   if ("false" === str)
+      return false;
+   else 
+      return str;
+}
+</script>
+
+<body onload="restore_options()">
+
+<div id="header">
+  <h1>
+    Jambase Show Finder Options
+  </h1>
+</div>
+
+
+  <div id="menu">
+  <h2>
+  Set the default options to show when the Extension loads.
+  </h2>
+    <center><table>
+    <form id="lookup" name="lookup" method="get" action="">
+        <tr>
+          <td class="header">City or<br />Zipcode:</td>
+          <td class="option"><input type="input" name="city" id="city" size="18" tabindex=1></td>
+          <td class="header">Band:</td>
+          <td class="option"><input type="input" name="band" id="band" size="15" tabindex=3></td>
+          <td class="header">Jambase <br>User ID:</td>
+          <td class="option"><input type="input" name="user" id="user" size="10" tabindex=5></td>
+        </tr>
+        <tr>
+          <td class="header">State:</td>
+          <td class="option"><select name="state" id="state" tabindex=2>
+                <option value=""></option> 
+                <option value="AL">Alabama</option> 
+                <option value="AK">Alaska</option> 
+                <option value="AB">Alberta</option> 
+                <option value="AZ">Arizona</option> 
+                <option value="AR">Arkansas</option> 
+                <option value="BC">British Columbia</option> 
+                <option value="CA">California</option> 
+                <option value="CO">Colorado</option> 
+                <option value="CT">Connecticut</option> 
+                <option value="DE">Delaware</option> 
+                <option value="DC">District of Columbia</option> 
+                <option value="FL">Florida</option> 
+                <option value="GA">Georgia</option> 
+                <option value="HI">Hawaii</option> 
+                <option value="ID">Idaho</option> 
+                <option value="IL">Illinois</option> 
+                <option value="IN">Indiana</option> 
+                <option value="IA">Iowa</option> 
+                <option value="KS">Kansas</option> 
+                <option value="KY">Kentucky</option> 
+                <option value="LA">Louisiana</option> 
+                <option value="ME">Maine</option> 
+                <option value="MB">Manitoba</option> 
+                <option value="MD">Maryland</option> 
+                <option value="MA">Massachusetts</option> 
+                <option value="MI">Michigan</option> 
+                <option value="MN">Minnesota</option> 
+                <option value="MS">Mississippi</option> 
+                <option value="MO">Missouri</option> 
+                <option value="MT">Montana</option> 
+                <option value="NE">Nebraska</option> `
+                <option value="NV">Nevada</option> 
+                <option value="NB">New Brunswick</option> 
+                <option value="NH">New Hampshire</option> 
+                <option value="NJ">New Jersey</option> 
+                <option value="NM">New Mexico</option> 
+                <option value="NY">New York</option> 
+                <option value="NF">Newfoundland</option> 
+                <option value="NC">North Carolina</option> 
+                <option value="ND">North Dakota</option> 
+                <option value="NT">Northwest Territories</option> 
+                <option value="NS">Nova Scotia</option> 
+                <option value="OH">Ohio</option> 
+                <option value="OK">Oklahoma</option> 
+                <option value="ON">Ontario</option> 
+                <option value="OR">Oregon</option> 
+                <option value="PA">Pennsylvania</option> 
+                <option value="PE">Prince Edward Island</option> 
+                <option value="QC">Quebec</option> 
+                <option value="RI">Rhode Island</option> 
+                <option value="SK">Saskatchewan</option> 
+                <option value="SC">South Carolina</option> 
+                <option value="SD">South Dakota</option> 
+                <option value="TN">Tennessee</option> 
+                <option value="TX">Texas</option> 
+                <option value="UT">Utah</option> 
+                <option value="VT">Vermont</option> 
+                <option value="VA">Virginia</option> 
+                <option value="WA">Washington</option> 
+                <option value="WV">West Virginia</option> 
+                <option value="WI">Wisconsin</option> 
+                <option value="WY">Wyoming</option> 
+                <option value="YT">Yukon</option> 
+                <option value="---"></option> 
+                <option value="ARG">Argentina</option> 
+                <option value="AU">Australia</option> 
+                <option value="AUS">Austria</option> 
+                <option value="BS">Bahamas</option> 
+                <option value="BH">Bahrain</option> 
+                <option value="BEL">Belgium</option> 
+                <option value="BZ">Belize</option> 
+                <option value="BMD">Bermuda</option> 
+                <option value="BA">Bosnia and Herzegovina</option> 
+                <option value="BR">Brazil</option> 
+                <option value="BG">Bulgaria</option> 
+                <option value="CL">Chile</option> 
+                <option value="CN">China</option> 
+                <option value="COL">Colombia</option> 
+                <option value="CR">Costa Rica</option> 
+                <option value="HR">Croatia</option> 
+                <option value="CZ">Czech Republic</option> 
+                <option value="DK">Denmark</option> 
+                <option value="DR">Dominican Republic</option> 
+                <option value="EC">Ecuador</option> 
+                <option value="EE">Estonia </option> 
+                <option value="ET">Ethiopia</option> 
+                <option value="FO">Faroe Islands</option> 
+                <option value="FJ">Fiji</option> 
+                <option value="FI">Finland</option> 
+                <option value="FRA">France</option> 
+                <option value="GE">Georgia (country)</option> 
+                <option value="GER">Germany</option> 
+                <option value="GH">Ghana</option> 
+                <option value="GR">Greece</option> 
+                <option value="GU">Guam</option> 
+                <option value="HU">Hungary</option> 
+                <option value="IS">Iceland</option> 
+                <option value="INA">India</option> 
+                <option value="IND">Indonesia</option> 
+                <option value="IR">Ireland</option> 
+                <option value="IRL">Israel</option> 
+                <option value="IT">Italy</option> 
+                <option value="JM">Jamaica</option> 
+                <option value="JP">Japan</option> 
+                <option value="KZ">Kazakhstan</option> 
+                <option value="LV">Latvia</option> 
+                <option value="LB">Lebanon</option> 
+                <option value="LI">Liechtenstein</option> 
+                <option value="LT">Lithuania </option> 
+                <option value="LU">Luxembourg </option> 
+                <option value="MY">Malaysia</option> 
+                <option value="MX">Mexico</option> 
+                <option value="MC">Monaco</option> 
+                <option value="MOR">Morocco</option> 
+                <option value="NL">Netherlands</option> 
+                <option value="NZ">New Zealand</option> 
+                <option value="NG">Nigeria</option> 
+                <option value="NO">Norway</option> 
+                <option value="PAN">Panama</option> 
+                <option value="PER">Peru</option> 
+                <option value="PH">Philippines</option> 
+                <option value="PL">Poland</option> 
+                <option value="POR">Portugal</option> 
+                <option value="PR">Puerto Rico</option> 
+                <option value="RO">Romania</option> 
+                <option value="RUS">Russia</option> 
+                <option value="ws">Samoa</option> 
+                <option value="SN">Senegal</option> 
+                <option value="RS">Serbia</option> 
+                <option value="SG">Singapore</option> 
+                <option value="SKR">Slovak Republic</option> 
+                <option value="SI">Slovenia</option> 
+                <option value="ZA">South Africa</option> 
+                <option value="KR">South Korea</option> 
+                <option value="ES">Spain</option> 
+                <option value="SE">Sweden</option> 
+                <option value="SWI">Switzerland</option> 
+                <option value="TH">Thailand</option> 
+                <option value="TT">Trinidad &amp; Tobago</option> 
+                <option value="TR">Turkey</option> 
+                <option value="UA">Ukraine</option> 
+                <option value="UAE">United Arab Emirates</option> 
+                <option value="GB">United Kingdom</option> 
+                <option value="UY">Uruguay</option> 
+                <option value="VE">Venezuela</option> 
+                <option value="VN">Vietnam</option> 
+                <option value="VI">Virgin Islands</option> 
+              </select>
+          </td>
+          <td class="header">Radius:</td>
+          <td class="option"> <select class="radius" name="radius" id="radius" tabindex=4>
+            <option value=""></option>
+            <option value="0">City Limits</option>
+            <option value="25">25 miles</option>
+            <option value="50">50 miles</option>
+            <option value="75">75 miles</option>
+            <option value="100">100 miles</option>
+            </select>
+          </td>
+            <td class="option" align="center" colspan="2"><button tabindex=6 style="width:80px" onclick="save_options()"> Save </button> <a href="#" onclick="clearOptions()">clear</a></td>
+        </tr>
+    </form>
+  </table>
+  </div>
+ 
+
+
+
+
+
+  <div id="footer">
+		Written By:
+		<a href="http://www.motersho.com" onclick="bkg.openurl('http://www.motersho.com')">Terry Moore</a> <br />
+    Concert Information provided by <br />
+    <a href="#" onclick="bkg.openurl('http://www.jambase.com')" title="JamBase Concert Search">
+    <img src= "img/jambase140x70.gif" alt="Search JamBase Concerts" border="0" /></a>
+
+	</div>
+<center>
+    <p>
+      <strong>*IMPORTANT: This is NOT an offical Jambase application.  </strong>
+      <br />
+      If you have issues or find bugs please contact <a href="mailto:motersho@gmail.com">Terry Moore</a> NOT Jambase.
+    </p>
+</center>
+
+  <div id="status"></div>
+</body>
+</html>
